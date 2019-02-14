@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StarNotary DAPP</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Noto+Sans+JP" rel="stylesheet"> 
+  </head>
+  <body>
+    <div class="content">
+      <h1 class="title">StarNotary Token DAPP</h1>
+      <hr>
+      <br>
+      <div class="left">
+        <h2>Create a Star</h1>
+        <p>
+          <label for="starName">Star Name:</label><input type="text" id="starName" class="textfield"></input>
+          <br><label for="starId">Star ID:</label><input type="text" id="starId" class="textfield"></input>
+          <br><button id="createStar" onclick="App.createStar()" class="button c">Create Star</button>
+          <br>
+          <br>
+        </p>
+      </div>
+      <div class="right">
+        <h2>Look up a Star</h1>
+        <p>
+          <label for="name">Star ID:</label><input type="text" id="lookid" class="textfield"></input>
+          <br><br><button onclick="App.lookUp()" class="button l">Look Up a Star</button>
+        </p> 
+        <br> 
+        <br>
+        <span id="status"></span>
+      </div>
+    <div style="clear:both;"></div> 
+    <div class="footer">by <a href="https://github.com/aistif" target="_blank">Aisha</a> - Twitter <a href="https://twitter.com/aishtif" target="_blank">@aishtif</a></div>
+    <div style="clear:both;"></div> 
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
