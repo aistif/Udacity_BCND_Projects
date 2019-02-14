@@ -1,3 +1,3 @@
-# Udacity_BCND_Projects - Project 5
+# Udacity_BCND_Projects
 
-Navigate to _app_ folder to access HTML page for inserting stars
+Twitter [@aishtif](https://twitter.com/aishtif)
