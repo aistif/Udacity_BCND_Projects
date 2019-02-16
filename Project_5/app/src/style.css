@@ -9,6 +9,7 @@ body {
 }
 .title {font-family: 'Lobster', cursive;padding: 10px 15px;}
 h2, p {
+    padding: 10px 15px;
     color: dimgray;
 }
 h2{
@@ -22,40 +23,16 @@ h2{
     height: auto;
     background-color: whitesmoke;
     margin: auto;
-    margin-top: 2%;
-    margin-bottom: 5%;
+    margin-top: 5%;
     border: 1px;
     border-radius: 27px 61px 27px 7px;
     overflow: auto;
-}
-
-.row {}
-.row::after{
-  content: "";
-  display: table;
-  clear: both; 
-}
-
-.column {
-    width: 48%;
-    float: left;
-}
-
-.fcolumn {
-    width: 100%;
-}
-
-textarea {
-    height: 100px !important;
-}
-.tokenf {
-    width: 98%;
 }
 .left {
     width: 43%;
     float: left;
     position: relative;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 .right {
     width: 43%;
@@ -75,7 +52,7 @@ textarea {
 }
 
 .textfield {
-    width: 80%;
+    width: 200px;
     height: 20px;
     padding: 5px 10px;
     margin: 3px 1px;
@@ -95,6 +72,7 @@ textarea {
 .l:hover {
     background-color: rgb(197, 147, 21);
 }
+
 
 .footer {
     position:fixed;
@@ -140,10 +118,6 @@ textarea {
         width: 90%;
         float: none;
         margin: auto;
-    }
-
-    .column {
-        width: 100%;
     }
 
 }

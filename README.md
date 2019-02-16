@@ -1,3 +1,7 @@
 # Udacity_BCND_Projects
 
-Twitter [@aishtif](https://twitter.com/aishtif)
+This repository keeps the work on Udacity's Blockchain Nanodegree projects.
+
+
+### Inqueries
+Please DM your inqueries to my Twitter > [@aishtif](https://twitter.com/aishtif)
