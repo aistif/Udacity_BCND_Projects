@@ -76,31 +76,34 @@ it('lets user2 buy a star and decreases its balance in ether', async() => {
 // Implement Task 2 Add supporting unit tests
 
 it('can add the star name and star symbol properly', async() => {
+    let instance = await starNotary.deployed();
     //1. Create a star
-    await this.contract.createStar('awesome star!', 'SAR', 1, { from: accounts[0] });
+    await instance.createStar('awesome star!', 1, { from: accounts[0] });
     //2. Call the name and symbol properties in your Smart Contract and compare with the name and symbol provided
-    await this.contract.lookUptokenIdToStarInfo(1);
+    await instance.lookUptokenIdToStarInfo(1);
+    assert.equal(await instance.tokenIdToStarInfo.call(1), 'awesome star!');
 });
 
 it('lets 2 users exchange stars', async() => {
+    let instance = await starNotary.deployed()
     // 1. Create 2 Stars
-    await this.contract.createStar('awesome star 2!', 'SAR', 2, { from: accounts[0] });
-    await this.contract.createStar('awesome star 3!', 'SAR', 3, { from: accounts[0] });
+    await instance.createStar('awesome star 2!', 2, { from: accounts[0] });
+    await instance.createStar('awesome star 3!', 3, { from: accounts[0] });
     // 2. Call the exchangeStars functions implemented in the Smart Contract
-    await this.contract.exchangeStars(2, 3);
+    await instance.exchangeStars(2, 3);
     // 3. Verify that the owners changed
-    await this.contract.lookUptokenIdToStarInfo(2);
-    await this.contract.lookUptokenIdToStarInfo(3);
-    assert.equal(await this.contract.tokenIdToStarInfo(3), ('awesome star 2!', 'SAR'))
+    await instance.lookUptokenIdToStarInfo(2);
+    await instance.lookUptokenIdToStarInfo(3);
+    assert.equal(await insatnce.tokenIdToStarInfo(3), 'awesome star 2!')
 });
 
 it('lets a user transfer a star', async() => {
+    let instance = await starNotary.deployed()
     // 1. create a Star
-    await this.contract.createStar('awesome star 4!', 'SAR', 4, { from: accounts[0] });
+    await instance.createStar('awesome star 4!', 4, { from: accounts[0] });
     // 2. use the transferStar function implemented in the Smart Contract
     let address = { from: accounts[2] };
-    await this.contract.transferStar(address, 4);
+    await instance.transferStar(address, 4);
     // 3. Verify the star owner changed.
-    assert.equal(await this.contract.ownerOf(4), address)
+    assert.equal(await instance.ownerOf(4), address)
 });
-

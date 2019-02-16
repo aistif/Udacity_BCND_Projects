@@ -23,8 +23,8 @@ contract StarNotary is ERC721 {
 
     
     // Create Star using the Struct
-    function createStar(string memory _name, string memory _symbol, uint256 _tokenId) public { // Passing the name and tokenId as a parameters
-        Star memory newStar = Star(_name, _symbol); // Star is an struct so we are creating a new Star
+    function createStar(string memory _name, uint256 _tokenId) public { // Passing the name and tokenId as a parameters
+        Star memory newStar = Star(_name, 'SAR'); // Star is an struct so we are creating a new Star
         tokenIdToStarInfo[_tokenId] = newStar; // Creating in memory the Star -> tokenId mapping
         _mint(msg.sender, _tokenId); // _mint assign the the star with _tokenId to the sender address (ownership)
     }
@@ -49,16 +49,14 @@ contract StarNotary is ERC721 {
         _transferFrom(ownerAddress, msg.sender, _tokenId); // We can't use _addTokenTo or_removeTokenFrom functions, now we have to use _transferFrom
         address payable ownerAddressPayable = _make_payable(ownerAddress); // We need to make this conversion to be able to use transfer() function to transfer ethers
         ownerAddressPayable.transfer(starCost);
-        if(msg.value > starCost) {
-            msg.sender.transfer(msg.value - starCost);
-        }
+        msg.sender.transfer(msg.value - starCost);
     }
 
     // Implement Task 1 lookUptokenIdToStarInfo
     function lookUptokenIdToStarInfo (uint256 _tokenId) public view returns (string memory) {
         //1. You should return the Star saved in tokenIdToStarInfo mapping
         Star memory star = tokenIdToStarInfo[_tokenId];
-        return string(abi.encodePacked(star.name, star.symbol));
+        return string(abi.encodePacked(star.name));
     }
 
     // Implement Task 1 Exchange Stars function
@@ -70,10 +68,9 @@ contract StarNotary is ERC721 {
         //2. You don't have to check for the price of the token (star)
         //3. Get the owner of the two tokens (ownerOf(_tokenId1), ownerOf(_tokenId1)
         //4. Use _transferFrom function to exchange the tokens.
-        if(msg.sender == owner1 || msg.sender == owner2) {
-            ERC721.safeTransferFrom(owner1, owner2, _tokenId1);
-            ERC721.safeTransferFrom(owner2, owner1, _tokenId2);
-        }
+        require(msg.sender == owner1 || msg.sender == owner2, "Only owners can exchange tokens.");
+        ERC721.safeTransferFrom(owner1, owner2, _tokenId1);
+        ERC721.safeTransferFrom(owner2, owner1, _tokenId2);
     }
 
     // Implement Task 1 Transfer Stars
