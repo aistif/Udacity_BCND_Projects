@@ -28,10 +28,10 @@
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const infuraKey = "df8a8933d6074eb4a6a06df3c020e78b";
+const infuraKey = "<Infura PROJECT ID>";
 //
 // const fs = require('fs');
-const mnemonic = "robust animal quality stay slush current gym opera dentist august attitude bone";
+const mnemonic = "<METAMASK SEED>";
 
 module.exports = {
   /**
