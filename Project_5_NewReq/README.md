@@ -14,7 +14,11 @@ Navigate to _app_ folder to access HTML page for inserting stars
 - Name: ```Awesome Star!```
 
 ### 2. ERC-721 Token Symbol
-- Symbol: ```SAR```
+- Symbol: ```USD```
+
+### 3. Contract Address
+- ```0x7687bcFb193b233a72740df1E734929Ea142f9f5```
+
 
 ### 3. Truffle and Openzippline Versions
 - Truffle compatibility ```v5.0.2```
