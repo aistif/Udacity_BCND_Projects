@@ -36,16 +36,31 @@ const App = {
     const name = document.getElementById("starName").value;
     const id = document.getElementById("starId").value;
     await createStar(name, id).send({from: this.account});
-    App.setStatus("New Star Owner is " + this.account + ".");
+    App.setStatus("New Star Owner is " + this.account + ".\n\n");
   },
 
   // Implement Task 4 Modify the front end of the DAPP
 
   lookUp: async function (){
-    const { lookUptokenIdToStarInfo } = this.meta.methods;
-    const tokenid = document.getElementById("lookid").value.trim();
-    const starInfo = await lookUptokenIdToStarInfo(tokenid)
-    App.setStatus("Star Name is " + JSON.stringify(starInfo) + ".");
+    /*let { lookUptokenIdToStarInfo } = this.meta.methods;
+    let tokenid = document.getElementById("lookid").value;
+    tokenid = parseInt(id);
+    let starInfo = await lookUptokenIdToStarInfo(tokenid).call();
+    if(starInfo) {
+      App.setStatus("Star Name is " + starInfo + ".\n\n");
+    } else {
+      App.setStatus("Couldn't find the star ID")
+    }*/
+    let { lookUptokenIdToStarInfo } = this.meta.methods;
+    let id = document.getElementById("lookid").value;
+    id = parseInt(id);
+    let starName = await lookUptokenIdToStarInfo(id).call();
+    if (starName.length == 0){ // if starName is zero then no name exist and therefor not owned
+      App.setStatus("Star not owned.","status");
+    }else{ // else its owned and displayed by passing tag ID to setStatus
+        App.setStatus("Star owned.","status");
+        App.setStatus("StarID "+id+" Name is "+starName+"\n\n");
+    }
   }
 
 };
