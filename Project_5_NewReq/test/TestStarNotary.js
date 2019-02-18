@@ -78,32 +78,30 @@ it('lets user2 buy a star and decreases its balance in ether', async() => {
 it('can add the star name and star symbol properly', async() => {
     let instance = await StarNotary.deployed();
     //1. Create a star
-    await instance.createStar('Awesome Star!', 1, { from: accounts[0] });
+    await instance.createStar('Awesome Star!', 6, { from: accounts[0] });
     //2. Call the name and symbol properties in your Smart Contract and compare with the name and symbol provided
-    await instance.lookUptokenIdToStarInfo(1);
-    assert.equal(await instance.tokenIdToStarInfo.call(1), 'Awesome Star!');
+    await instance.lookUptokenIdToStarInfo(6);
+    assert.equal(await instance.tokenIdToStarInfo.call(6), 'Awesome Star!');
 });
 
 it('lets 2 users exchange stars', async() => {
     let instance = await StarNotary.deployed();
     // 1. Create 2 Stars
-    await instance.createStar('Awesome Star 2!', 2, { from: accounts[0] });
-    await instance.createStar('Awesome Star 3!', 3, { from: accounts[0] });
+    await instance.createStar('Awesome Star 14!', 7, { from: accounts[0] });
+    await instance.createStar('Awesome Star 15!', 8, { from: accounts[1] });
     // 2. Call the exchangeStars functions implemented in the Smart Contract
-    await instance.exchangeStars(2, 3);
+    let newOwner = await instance.ownerOf.call(7);
+    await instance.exchangeStars(7, 8);
     // 3. Verify that the owners changed
-    await instance.lookUptokenIdToStarInfo(2);
-    await instance.lookUptokenIdToStarInfo(3);
-    assert.equal(await insatnce.tokenIdToStarInfo.call(3), 'Awesome Star 2!')
+    assert.equal(await instance.ownerOf.call(8), newOwner);
 });
 
 it('lets a user transfer a star', async() => {
     let instance = await StarNotary.deployed();
     // 1. create a Star
-    await instance.createStar('Awesome Star 4!', 4, { from: accounts[0] });
+    await instance.createStar('Awesome Star 4!', 9, { from: accounts[0] });
     // 2. use the transferStar function implemented in the Smart Contract
-    let address = { from: accounts[2] };
-    await instance.transferStar(address, 4);
+    await instance.transferStar(accounts[1], 9);
     // 3. Verify the star owner changed.
-    assert.equal(await instance.ownerOf(4), address)
+    assert.equal(await instance.ownerOf.call(9), accounts[1]);
 });

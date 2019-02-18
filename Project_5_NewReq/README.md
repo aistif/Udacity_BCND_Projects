@@ -11,13 +11,13 @@ Navigate to _app_ folder to access HTML page for inserting stars
 ## Project Specifications
 
 ### 1. ERC-721 Token Name
-- Name: ```Awesome Star!```
+- Name: ```Aishas Token```
 
 ### 2. ERC-721 Token Symbol
-- Symbol: ```USD```
+- Symbol: ```ATN```
 
 ### 3. Contract Address
-- ```0x7687bcFb193b233a72740df1E734929Ea142f9f5```
+- ```0x81e235624b18D8E601F092ef4566386773317e30```
 
 
 ### 3. Truffle and Openzippline Versions
