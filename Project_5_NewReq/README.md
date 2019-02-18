@@ -20,6 +20,7 @@ Navigate to _app_ folder to access HTML page for inserting stars
 - ```0x81e235624b18D8E601F092ef4566386773317e30```
 
 
+
 ### 3. Truffle and Openzippline Versions
 - Truffle compatibility ```v5.0.2```
 - OpenZippline compatibility ```v2.1.2```
